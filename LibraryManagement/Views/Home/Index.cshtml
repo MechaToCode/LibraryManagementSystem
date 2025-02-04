@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+   <img src="https://www.mgu.edu.tr/wp-content/uploads/2023/04/kutuphane_image_07.jpg"style="width:800px ;height 60px; position:center; "
+</div>
+
+<h1>Welcome to Library</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Year</td>
+                <td>@book.Category</td>
+                <td>
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="btn btn-info btn-sm">Details</a>
+                    <a asp-controller="Book" asp-action="Edit" asp-route-id="@book.BookId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-controller="Book" asp-action="Delete" asp-route-id="@book.BookId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

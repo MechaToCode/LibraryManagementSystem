@@ -1,0 +1,46 @@
+@model Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<h1>Book Details</h1>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <th>Author</th>
+        <td>@Model.Author</td>
+    </tr>
+    <tr>
+        <th>Year</th>
+        <td>@Model.Year</td>
+    </tr>
+    <tr>
+        <th>Page Count</th>
+        <td>@Model.Page</td>
+    </tr>
+    <tr>
+        <th>Category</th>
+        <td>@Model.Category</td>
+    </tr>
+    <tr>
+        <th>Cover Image</th>
+        <td>
+            @if (!string.IsNullOrEmpty(Model.Image))
+            {
+                <img src="~/img/@Model.Image" width="100" height="150" />
+            }
+            else
+            {
+                <p>No image available</p>
+            }
+        </td>
+    </tr>
+</table>
+
+<a asp-action="Edit" asp-route-id="@Model.BookId" class="btn btn-warning">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

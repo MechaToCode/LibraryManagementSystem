@@ -1,0 +1,19 @@
+@model dynamic
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<table class="table">
+    @foreach (var prop in Model.GetType().GetProperties())
+    {
+        <tr>
+            <th>@prop.Name</th>
+            <td>@prop.GetValue(Model)</td>
+        </tr>
+    }
+</table>
+
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>
